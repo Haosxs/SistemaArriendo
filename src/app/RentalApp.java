@@ -1,102 +1,103 @@
 package app;
+
 import java.util.*;
 
-public class RentalApp {
+public class SistemaArriendo {
 
-    // ==================== CLASE CLIENTE ====================
-    static class Client {
+    static class Cliente {
         private String id;
-        private String name;
+        private String nombre;
 
-        public Client(String id, String name) {
+        public Cliente(String id, String nombre) {
             this.id = id;
-            this.name = name;
+            this.nombre = nombre;
         }
 
         public String getId() { return id; }
         public void setId(String id) { this.id = id; }
 
-        public String getName() { return name; }
-        public void setName(String name) { this.name = name; }
-
-        public String toString() {
-            return "Cliente [id=" + id + ", nombre=" + name + "]";
-        }
-    }
-
-    static class Equipment {
-        private String code;
-        private String name;
-        private boolean available;
-
-        public Equipment(String code, String name) {
-            this.code = code;
-            this.name = name;
-            this.available = true;
-        }
-
-        public String getCode() { return code; }
-        public void setCode(String code) { this.code = code; }
-
-        public String getName() { return name; }
-        public void setName(String name) { this.name = name; }
-
-        public boolean isAvailable() { return available; }
-        public void setAvailable(boolean available) { this.available = available; }
+        public String getNombre() { return nombre; }
+        public void setNombre(String nombre) { this.nombre = nombre; }
 
         @Override
         public String toString() {
-            return "Equipo [codigo=" + code + ", nombre=" + name + ", disponible=" + available + "]";
+            return "Cliente [id=" + id + ", nombre=" + nombre + "]";
         }
     }
 
-    // ==================== CLASE SUCURSAL ====================
-    static class Branch {
-        private String name;
-        private List<Equipment> equipments;
+    static class Equipo {
+        private String codigo;
+        private String nombre;
+        private boolean disponible;
 
-        public Branch(String name) {
-            this.name = name;
-            this.equipments = new ArrayList<>();
+        public Equipo(String codigo, String nombre) {
+            this.codigo = codigo;
+            this.nombre = nombre;
+            this.disponible = true;
         }
 
-        public String getName() { return name; }
-        public void setName(String name) { this.name = name; }
+        public String getCodigo() { return codigo; }
+        public void setCodigo(String codigo) { this.codigo = codigo; }
 
-        public List<Equipment> getEquipments() { return equipments; }
+        public String getNombre() { return nombre; }
+        public void setNombre(String nombre) { this.nombre = nombre; }
 
-        public void addEquipment(Equipment eq) {
-            equipments.add(eq);
+        public boolean isDisponible() { return disponible; }
+        public void setDisponible(boolean disponible) { this.disponible = disponible; }
+
+        @Override
+        public String toString() {
+            return "Equipo [codigo=" + codigo + ", nombre=" + nombre + ", disponible=" + disponible + "]";
+        }
+    }
+
+    static class Sucursal {
+        private String nombre;
+        private List<Equipo> listaEquipos;
+
+        public Sucursal(String nombre) {
+            this.nombre = nombre;
+            this.listaEquipos = new ArrayList<>();
+        }
+
+        public String getNombre() { return nombre; }
+        public void setNombre(String nombre) { this.nombre = nombre; }
+
+        public List<Equipo> getListaEquipos() { return listaEquipos; }
+
+        public void agregarEquipo(Equipo eq) {
+            listaEquipos.add(eq);
         }
 
         @Override
         public String toString() {
-            return "Sucursal [nombre=" + name + ", equipos=" + equipments.size() + "]";
+            return "Sucursal [nombre=" + nombre + ", cantidadEquipos=" + listaEquipos.size() + "]";
         }
     }
 
-    static class Rental {
-        private Client client;
-        private Equipment equipment;
-        private Date date;
+    static class Arriendo {
+        private Cliente cliente;
+        private Equipo equipo;
+        private Date fecha;
 
-        public Rental(Client client, Equipment equipment) {
-            this.client = client;
-            this.equipment = equipment;
-            this.date = new Date();
-            equipment.setAvailable(false);
+        public Arriendo(Cliente cliente, Equipo equipo) {
+            this.cliente = cliente;
+            this.equipo = equipo;
+            this.fecha = new Date();
+            equipo.setDisponible(false);
         }
 
-        public Client getClient() { return client; }
-        public Equipment getEquipment() { return equipment; }
-        public Date getDate() { return date; }
+        public Cliente getCliente() { return cliente; }
+        public Equipo getEquipo() { return equipo; }
+        public Date getFecha() { return fecha; }
 
         @Override
         public String toString() {
-            return "Arriendo [cliente=" + client.getName() + ", equipo=" + equipment.getName() + ", fecha=" + date + "]";
+            return "Arriendo [cliente=" + cliente.getNombre() + ", equipo=" + equipo.getNombre() + ", fecha=" + fecha + "]";
         }
     }
+
     public static void main(String[] args) {
-    	return;
+        return;
     }
 }
